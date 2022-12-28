@@ -1,7 +1,37 @@
-import React from "react"
+import React, { useContext } from "react"
 import {Button, Label, TextInput, Card} from "flowbite-react"
+import { GlobalContext } from "../actions/GlobalContext"
 
 function FormUsername(){
+
+    const { state } = useContext (GlobalContext)
+    
+    const {
+        input,
+        setInput
+    } = state
+
+    const handleInput = (event) => {
+        let name = event.target.name;
+        let value = event.target.value;
+
+        if (name === "username") {
+            setInput({ ...input, username: value })
+        }
+    }
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault()
+
+        let {
+            username,
+        } = input
+
+    }
+
+
+
     return (
         <div className="flex justify-center items-center">
             <Card className="cardTop">
@@ -9,7 +39,7 @@ function FormUsername(){
                     Search GitHub Repositorie's
                 </h5>
 
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div>
                         <div className="mb-2 block">
                         <Label
@@ -21,9 +51,12 @@ function FormUsername(){
                         id="username"
                         type="text"
                         required={true}
+                        onChange={handleInput}
+                        value={input.username}
+                        name="username"
                         />
                     </div>
-                    <Button type="submit">
+                    <Button type={'submit'}>
                         Search
                     </Button>
                 </form>
