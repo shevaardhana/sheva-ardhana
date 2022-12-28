@@ -5,7 +5,7 @@ export const GlobalContext = createContext()
 export const GlobalProvider = (props) => {
 
     const [ input, setInput ] = useState({
-        username: null
+        username: ''
     })
 
     let state = {input, setInput}

@@ -5,7 +5,9 @@ import { GlobalProvider } from "./actions/GlobalContext";
 export default function Home() {
   return (
       <GlobalProvider>
+
         <FormUsername />
+
       </GlobalProvider>
   )
 }
